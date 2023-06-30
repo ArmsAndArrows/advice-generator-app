@@ -1,0 +1,174 @@
+///Colors
+///
+$color-white: rgb(255, 255, 255);
+$color-black: rgb(0, 0, 0);
+$color-light-cyan: hsl(193, 38%, 86%);
+$color-neon-green: hsl(150, 100%, 66%);
+$color-blue: hsl(217, 19%, 38%);
+$color-grayish-blue: hsl(217, 19%, 24%);
+$color-dark-blue: hsl(218, 23%, 16%);
+
+///BEGIN
+///
+html {
+    box-sizing: border-box;
+    @media only screen and (min-width: 200px) {
+        font-size: 50%; ////for immersive future with even smaller phones
+    }
+    @media only screen and (min-width: 320px) {
+        font-size: 62.5%; ////defines 10px as root
+    }
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+    line-height: 1;
+    font-family: "Manrope", sans-serif;
+    font-weight: 800;
+    background: $color-dark-blue;
+    min-height: 100vh;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &__header {
+        display: none;
+    }
+}
+
+.advice {
+    background-color: rgba($color-grayish-blue, 0.8);
+    margin: 12rem 1.6rem;
+    width: 55rem;
+    text-align: center;
+    padding-top: 4.2rem;
+    padding-bottom: 6.6rem;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    animation: opaqueIn 1s cubic-bezier(0.39, 0.575, 0.565, 1);
+    backdrop-filter: blur(45px);
+    @media (min-width:800px) {
+        margin: 15.5% 0;  
+        padding-top: 5rem;
+        padding-bottom: 7.2rem;
+
+    }
+    &__number {
+        font-size: 1.1rem;
+        text-transform: uppercase;
+        letter-spacing: 0.34rem;
+        color: $color-neon-green;
+        opacity: 0;
+        animation: slideIn 0.7s 0.2s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
+        @media (min-width:800px) {
+            font-size: 1.4rem;
+    
+        }
+    }
+    &__post {
+        color: $color-light-cyan;
+        font-size: 2.3rem;
+        margin: 2.5rem 2.2rem;
+        line-height: 1.4;
+        opacity: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 16rem;
+        animation: opaqueIn 1s 0.7s  cubic-bezier(0.39, 0.575, 0.565, 1) forwards;
+      
+        @media (min-width:800px) {
+            font-size: 2.8rem;
+            font-weight: 700;
+            line-height: 1.41;
+            height: 14rem;
+            margin: 2.5rem 5rem;
+    
+        }
+    }
+    &__divider {
+        @media (min-width:800px) {
+            margin-top: 1rem;
+        }
+    }
+    &__btn {
+        background: $color-neon-green;
+        padding: 2rem;
+        border-radius: 50%;
+        position: absolute;
+        bottom: 0;
+        transform: translateY(50%);
+        transition: all 0.2s ease-out;
+        svg{
+            animation: rotateCubeY 0.5s linear;
+        }
+        
+        &:hover{
+            box-shadow: 0px 0px 24px $color-neon-green;
+            transform: translateY(50%) scale(1.1);
+        }
+        &:active{
+            box-shadow: 0px 0px 24px $color-blue;
+            transform: translateY(50%) scale(1);
+            
+            
+           
+        }
+        svg > path {
+            fill: #202733;
+        }
+    }
+}
+
+
+.opaque{
+    animation: opaqueIn 2s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+}
+
+
+@keyframes opaqueIn {
+    0%{opacity: 0;}
+    100%{opacity: 1;}
+    
+}
+
+@keyframes slideIn{
+    0%{
+        transform: translateX(50%);
+        opacity: 0;
+    }
+    70%{
+        opacity: 1;
+
+    }
+    100%{
+        transform: translateX(0%);
+        opacity: 1;
+    }
+}
+
+
+
+//rotating cubes
+
+.rotator{
+    svg{
+        animation: rotateCubeZ 0.5s linear;
+    }
+}
+
+
+@keyframes rotateCubeY{
+    0%{transform: rotateY(0deg);}
+    100%{transform: rotateY(360deg);}
+}
+
+@keyframes rotateCubeZ{
+    0%{transform: rotateZ(0deg);}
+    100%{transform: rotateZ(-360deg);}
+}
